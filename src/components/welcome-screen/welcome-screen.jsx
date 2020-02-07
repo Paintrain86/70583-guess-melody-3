@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Welcome = (props) => {
+const WelcomeScreen = (props) => {
 
   const {
     luckText,
@@ -35,11 +35,11 @@ const Welcome = (props) => {
   }
 };
 
-Welcome.propTypes = {
+WelcomeScreen.propTypes = {
   luckText: PropTypes.string.isRequired,
   gameTime: PropTypes.number.isRequired,
   mistakesCount: PropTypes.number.isRequired,
   onStartBtnClick: PropTypes.func
 };
 
-export default Welcome;
+export default WelcomeScreen;

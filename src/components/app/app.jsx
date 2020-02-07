@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Welcome from '../welcome/welcome.jsx';
+import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends React.PureComponent {
     return (
       <>
         <h1>Добро пожаловать в игру<br/>&laquo;Угадай мелодию&raquo;</h1>
-        <Welcome {...params.welcome} />
+        <WelcomeScreen {...params.welcome} />
       </>
     );
   }
