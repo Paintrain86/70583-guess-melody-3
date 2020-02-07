@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
 
 const params = {
-  startParams: {
-    luckText: `Удаче тебе, парень`,
-    playTime: 310,
-    mistakes: 4
+  welcome: {
+    luckText: `Удачи тебе, парень`,
+    gameTime: 310,
+    mistakesCount: 4
   }
 };
 

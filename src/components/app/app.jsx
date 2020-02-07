@@ -15,7 +15,7 @@ class App extends React.PureComponent {
     return (
       <>
         <h1>Добро пожаловать в игру<br/>&laquo;Угадай мелодию&raquo;</h1>
-        <Welcome {...params.startParams} />
+        <Welcome {...params.welcome} />
       </>
     );
   }
@@ -23,7 +23,11 @@ class App extends React.PureComponent {
 
 App.propTypes = {
   params: PropTypes.shape({
-    startParams: PropTypes.object
+    welcome: PropTypes.shape({
+      luckText: PropTypes.string.isRequired,
+      gameTime: PropTypes.number.isRequired,
+      mistakesCount: PropTypes.number.isRequired
+    })
   })
 };
 
