@@ -12,7 +12,7 @@ class Welcome extends React.PureComponent {
     }
 
     const minutes = Math.floor(seconds / 60);
-    const restSeconds = seconds - minutes * 60;
+    const restSeconds = seconds % 60;
 
     return `${minutes} минут${(restSeconds > 0) ? ` ${restSeconds} секунд` : ``}`;
   }
