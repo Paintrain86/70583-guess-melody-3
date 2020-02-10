@@ -30,7 +30,7 @@ const WelcomeScreen = (props) => {
     const minutesCount = Math.floor(secondsCount / minutesDivider);
     const restSecondsCount = secondsCount % minutesDivider;
 
-    return `${minutesCount} минут${(restSecondsCount > 0) ? ` ${restSecondsCount} секунд` : ``}`;
+    return `${(minutesCount > 0) ? `${minutesCount} минут` : ``} ${(restSecondsCount > 0) ? ` ${restSecondsCount} секунд` : ``}`;
   }
 };
 

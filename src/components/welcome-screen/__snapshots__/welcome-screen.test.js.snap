@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomeScreen Should be rendered correctly 1`] = `
+Array [
+  <ul>
+    <li>
+      <strong>
+        Текст удачи:
+      </strong>
+       
+      Тестовый текст на удачу
+    </li>
+    <li>
+      <strong>
+        Время на прохождение:
+      </strong>
+       
+        50 секунд
+    </li>
+    <li>
+      <strong>
+        Максимальное кол-во ошибок:
+      </strong>
+       
+      2
+    </li>
+  </ul>,
+  <button
+    onClick={[Function]}
+  >
+    Погнали
+  </button>,
+]
+`;
