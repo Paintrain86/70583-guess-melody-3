@@ -12,20 +12,21 @@ class App extends React.PureComponent {
 
   render() {
     const {
-      params
+      params: {gameSettings},
+      params: {gameQuestions}
     } = this.props;
 
     return (
       <Router>
         <Switch>
           <Route exact path="/">
-            <WelcomeScreen {...params.welcome} />
+            <WelcomeScreen {...gameSettings} />
           </Route>
           <Route exact path="/dev-artist">
-            <GuessArtist />
+            <GuessArtist {...gameQuestions[1]} />
           </Route>
           <Route exact path="/dev-genre">
-            <GuessGenre />
+            <GuessGenre {...gameQuestions[0]} />
           </Route>
         </Switch>
       </Router>
@@ -35,11 +36,12 @@ class App extends React.PureComponent {
 
 App.propTypes = {
   params: PropTypes.shape({
-    welcome: PropTypes.shape({
+    gameSettings: PropTypes.shape({
       luckText: PropTypes.string.isRequired,
       gameTime: PropTypes.number.isRequired,
       mistakesCount: PropTypes.number.isRequired
-    })
+    }),
+    gameQuestions: PropTypes.array.isRequired
   })
 };
 
