@@ -13,10 +13,7 @@ class App extends React.PureComponent {
     } = this.props;
 
     return (
-      <>
-        <h1>Добро пожаловать в игру<br/>&laquo;Угадай мелодию&raquo;</h1>
-        <WelcomeScreen {...params.welcome} />
-      </>
+      <WelcomeScreen {...params.welcome} />
     );
   }
 }
