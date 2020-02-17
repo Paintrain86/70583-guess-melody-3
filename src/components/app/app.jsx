@@ -5,14 +5,60 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import GuessArtist from '../guess-artist/guess-artist.jsx';
 import GuessGenre from '../guess-genre/guess-genre.jsx';
 
+const QuestionType = {
+  genre: `genre`,
+  artist: `artist`
+};
+
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      curQuestion: -1
+    };
+
+    this._onUserAnswer = this._onUserAnswer.bind(this);
+  }
+
+  _getScreen() {
+    const {
+      params: {gameSettings},
+      params: {gameQuestions}
+    } = this.props;
+
+    const question = gameQuestions[this.state.curQuestion];
+
+    if (this.state.curQuestion === -1 || this.state.curQuestion >= gameQuestions.length) {
+      return <WelcomeScreen onStartClick={this._onStartBtnClick} {...gameSettings} />;
+    }
+
+    if (question) {
+      switch (question.type) {
+        case QuestionType.genre:
+          return <GuessGenre onAnswer={this._onUserAnswer} question={question} />;
+        case QuestionType.artist:
+          return <GuessArtist onAnswer={this._onUserAnswer} question={question} />;
+      }
+    }
+
+    return null;
+  }
+
+  _onUserAnswer() {
+    this.setState((prevState) => ({
+      curQuestion: prevState.curQuestion + 1
+    }));
+  }
+
+  _onStartBtnClick() {
+    this.setState({
+      curQuestion: 0
+    });
   }
 
   render() {
     const {
-      params: {gameSettings},
       params: {gameQuestions}
     } = this.props;
 
@@ -20,7 +66,7 @@ class App extends React.PureComponent {
       <Router>
         <Switch>
           <Route exact path="/">
-            <WelcomeScreen {...gameSettings} />
+            {this._getScreen()}
           </Route>
           <Route exact path="/dev-artist">
             <GuessArtist {...gameQuestions[1]} />
