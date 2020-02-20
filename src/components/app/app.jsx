@@ -6,8 +6,8 @@ import GuessArtist from '../guess-artist/guess-artist.jsx';
 import GuessGenre from '../guess-genre/guess-genre.jsx';
 
 const QuestionType = {
-  genre: `genre`,
-  artist: `artist`
+  GENRE: `genre`,
+  ARTIST: `artist`
 };
 
 class App extends React.PureComponent {
@@ -18,6 +18,7 @@ class App extends React.PureComponent {
       curQuestion: -1
     };
 
+    this._onStartBtnClick = this._onStartBtnClick.bind(this);
     this._onUserAnswer = this._onUserAnswer.bind(this);
   }
 
@@ -35,9 +36,9 @@ class App extends React.PureComponent {
 
     if (question) {
       switch (question.type) {
-        case QuestionType.genre:
+        case QuestionType.GENRE:
           return <GuessGenre onAnswer={this._onUserAnswer} question={question} />;
-        case QuestionType.artist:
+        case QuestionType.ARTIST:
           return <GuessArtist onAnswer={this._onUserAnswer} question={question} />;
       }
     }
@@ -69,10 +70,10 @@ class App extends React.PureComponent {
             {this._getScreen()}
           </Route>
           <Route exact path="/dev-artist">
-            <GuessArtist {...gameQuestions[1]} />
+            <GuessArtist onAnswer={this._onUserAnswer} question={gameQuestions[1]} />
           </Route>
           <Route exact path="/dev-genre">
-            <GuessGenre {...gameQuestions[0]} />
+            <GuessGenre onAnswer={this._onUserAnswer} question={gameQuestions[0]} />
           </Route>
         </Switch>
       </Router>

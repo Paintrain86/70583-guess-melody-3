@@ -9,7 +9,6 @@ class GuessGenre extends React.PureComponent {
       answers: this.props.question.answers.map(() => false)
     };
 
-    this._handleInputChange = this._handleInputChange.bind(this);
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
   }
 
@@ -48,7 +47,7 @@ class GuessGenre extends React.PureComponent {
 
         <section className="game__screen">
           <h2 className="game__title">Выберите {(genre.displayName) ? genre.displayName : genre.name} треки</h2>
-          <form className="game__tracks">
+          <form className="game__tracks" onSubmit={this._handleFormSubmit}>
             {answers.map((it, i) => {
               return (
                 <div className="track" key={it.id}>
@@ -62,9 +61,10 @@ class GuessGenre extends React.PureComponent {
                       id={`answer-${it.id}`}
                       checked={this.state.answers[i]}
                       onChange={(evt) => {
-                        evt.preventDefault();
+                        const value = evt.target.checked;
+
                         this.setState({
-                          answers: [...curAnswers.slice(0, i), evt.target.checked, ...curAnswers.slice(i + 1)]
+                          answers: [...curAnswers.slice(0, i), value, ...curAnswers.slice(i + 1)]
                         });
                       }}
                     />
