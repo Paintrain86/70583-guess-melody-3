@@ -1,39 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Should be rendered correctly 1`] = `
-Array [
-  <h1>
-    Добро пожаловать в игру
-    <br />
-    «Угадай мелодию»
-  </h1>,
-  <ul>
-    <li>
-      <strong>
-        Текст удачи:
-      </strong>
-       
-      Тестовый текст на удачу
-    </li>
-    <li>
-      <strong>
-        Время на прохождение:
-      </strong>
-       
-        50 секунд
-    </li>
-    <li>
-      <strong>
-        Максимальное кол-во ошибок:
-      </strong>
-       
-      2
-    </li>
-  </ul>,
+<section
+  className="welcome"
+>
+  <div
+    className="welcome__logo"
+  >
+    <img
+      alt="Угадай мелодию"
+      height="83"
+      src="img/melody-logo.png"
+      width="186"
+    />
+  </div>
   <button
+    className="welcome__button"
     onClick={[Function]}
   >
-    Погнали
-  </button>,
-]
+    <span
+      className="visually-hidden"
+    >
+      Начать игру
+    </span>
+  </button>
+  <h2
+    className="welcome__rules-title"
+  >
+    Правила игры
+  </h2>
+  <p
+    className="welcome__text"
+  >
+    Правила просты:
+  </p>
+  <ul
+    className="welcome__rules-list"
+  >
+    <li>
+      Нужно ответить на все вопросы за 
+        50 секунд
+      .
+    </li>
+    <li>
+      Можно допустить 
+      2
+       ошибки.
+    </li>
+  </ul>
+  <p
+    className="welcome__text"
+  >
+    Тестовый текст на удачу
+  </p>
+</section>
 `;

@@ -1,15 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import GuessArtist from './guess-artist.jsx';
+import GuessGenre from './guess-genre.jsx';
 
 import {questions} from '../../mocks/app-test-settings.js';
 
-describe(`GuessArtist`, () => {
+describe(`GuessGenre`, () => {
   it(`Should be rendered correctly`, () => {
 
     const markup = renderer
-      .create(<GuessArtist
-        question={questions[1]}
+      .create(<GuessGenre
+        question={questions[0]}
         onAnswer={jest.fn()}
       />)
       .toJSON();

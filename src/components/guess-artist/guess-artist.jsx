@@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
 
 const GuessArtist = (props) => {
   const {
+    question,
     question: {song},
     question: {answers},
     onAnswer
   } = props;
-
-  const _handleInputChange = (evt) => {
-    evt.preventDefault();
-    onAnswer(props.question, evt.target.value);
-  };
 
   return (
     <section className="game game--artist">
@@ -49,7 +45,10 @@ const GuessArtist = (props) => {
 
             return (
               <div className="artist" key={key}>
-                <input className="artist__input visually-hidden" type="radio" name="answer" value={it.artist} id={key} onChange={_handleInputChange} />
+                <input className="artist__input visually-hidden" type="radio" name="answer" value={it.artist} id={key} onChange={(evt) => {
+                  evt.preventDefault();
+                  onAnswer(question, it.artist);
+                }} />
                 <label className="artist__name" htmlFor={key}>
                   <img className="artist__picture" src={it.picture} alt="Пелагея" />
                   {it.artist}
